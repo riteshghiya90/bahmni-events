@@ -16,9 +16,7 @@ import java.lang.reflect.Method;
 public class PatientAdvice implements AfterReturningAdvice, ApplicationEventPublisherAware {
 	
 	private final Logger log = LogManager.getLogger(PatientAdvice.class);
-	
-	private final String EVENT_NAME = "bahmni-patient";
-	
+
 	private ApplicationEventPublisher eventPublisher;
 	
 	@Override
@@ -27,7 +25,7 @@ public class PatientAdvice implements AfterReturningAdvice, ApplicationEventPubl
 		Patient patient = (Patient) returnValue;
 		
 		Object representation = ConversionUtil.convertToRepresentation(patient, Representation.FULL);
-		Event event = new Event(EVENT_NAME, representation, patient.getUuid());
+		Event event = new Event("bahmni-patient", representation, patient.getUuid());
 		eventPublisher.publishEvent(event);
 		
 		log.info("Successfully published event with uuid : " + patient.getUuid());
