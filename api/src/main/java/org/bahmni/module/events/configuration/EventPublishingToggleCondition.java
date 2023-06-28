@@ -10,7 +10,7 @@ public class EventPublishingToggleCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String event_publisher_toggle = System.getenv("EVENT_PUBLISH_TOGGLE");
+        String event_publisher_toggle = System.getenv("PUBLISH_PATIENT_EVENTS_TO_JMS");
         return  event_publisher_toggle != null && event_publisher_toggle.equalsIgnoreCase("true");
     }
 }
