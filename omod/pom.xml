@@ -16,7 +16,7 @@
 	<description>Bahmni module for events</description>
 
 	<properties>
-		<MODULE_ID>events</MODULE_ID>
+		<MODULE_ID>bahmni-events</MODULE_ID>
 		<MODULE_NAME>${project.name}</MODULE_NAME>
 		<MODULE_VERSION>${project.version}</MODULE_VERSION>
 		<MODULE_PACKAGE>${project.groupId}.${MODULE_ID}</MODULE_PACKAGE>

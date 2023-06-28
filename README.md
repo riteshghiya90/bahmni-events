@@ -1,32 +1,18 @@
-openmrs-module
-==========================
+OpenMRS Module Appointments Backend
+=================================
+This repository has the advice written on OpenMRSObject Services which can further used to generate and publish event to the configured JMS.
+We are using JNDI JMS resource to connect.
+We have tested against activeMQ JMS implementation as of now.
 
-A demonstration module for new OpenMRS module developers
+## Packaging
+```mvn clean package```
 
-Description
------------
-This is a very basic module which can be used as a starting point in creating a new module.
+### Prerequisite
+    JDK 1.8
+    ruby 2.2+
+    RubyGems
+    Compass 1.0.3 (gem install compass)
 
-Building from Source
---------------------
-You will need to have Java 1.6+ and Maven 2.x+ installed.  Use the command 'mvn package' to 
-compile and package the module.  The .omod file will be in the omod/target folder.
+## Deploy
 
-Alternatively you can add the snippet provided in the [Creating Modules](https://wiki.openmrs.org/x/cAEr) page to your 
-omod/pom.xml and use the mvn command:
-
-    mvn package -P deploy-web -D deploy.path="../../openmrs-1.8.x/webapp/src/main/webapp"
-
-It will allow you to deploy any changes to your web 
-resources such as jsp or js files without re-installing the module. The deploy path says 
-where OpenMRS is deployed.
-
-Installation
-------------
-1. Build the module to produce the .omod file.
-2. Use the OpenMRS Administration > Manage Modules screen to upload and install the .omod file.
-
-If uploads are not allowed from the web (changable via a runtime property), you can drop the omod
-into the ~/.OpenMRS/modules folder.  (Where ~/.OpenMRS is assumed to be the Application 
-Data Directory that the running openmrs is currently using.)  After putting the file in there 
-simply restart OpenMRS/tomcat and the module will be loaded and started.
+Copy ```bahmni-events/omod/target/bahmni-events-1.0.0-SNAPSHOT.omod``` into OpenMRS modules directory and restart OpenMRS
