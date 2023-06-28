@@ -53,6 +53,7 @@
 					</includes>
 					<excludes>
 						<exclude>**/*Activator.class</exclude>
+						<exclude>**/configuration/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>

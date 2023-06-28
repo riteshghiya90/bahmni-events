@@ -2,6 +2,7 @@ package org.bahmni.module.events.configuration;
 
 import org.bahmni.module.events.listner.PatientAdvice;
 import org.bahmni.module.events.publisher.EventPublisher;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +22,8 @@ public class EventConfiguration {
     public JndiObjectFactoryBean eventJndiObjectFactoryBean() {
         JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
 
-        jndiObjectFactoryBean.setJndiName("java:comp/env/jmsConnectionFactory");
+        String jndiJMSResourceName = "jmsConnectionFactory";
+        jndiObjectFactoryBean.setJndiName("java:comp/env/" + jndiJMSResourceName);
         jndiObjectFactoryBean.setProxyInterface(ConnectionFactory.class);
         jndiObjectFactoryBean.setLookupOnStartup(true);
 
@@ -64,6 +66,6 @@ public class EventConfiguration {
 
     @Bean
     public EventPublisher eventPublisher(JmsTemplate jmsTemplate) {
-        return new EventPublisher(jmsTemplate);
+        return new EventPublisher(jmsTemplate, new ObjectMapper());
     }
 }

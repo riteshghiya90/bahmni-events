@@ -15,16 +15,18 @@ public class EventPublisher {
 	
 	private final JmsTemplate jmsTemplate;
 	
-	private final ObjectMapper objectMapper = new ObjectMapper();
+	private final ObjectMapper objectMapper;
 	
-	public EventPublisher(JmsTemplate jmsTemplate) {
+	public EventPublisher(JmsTemplate jmsTemplate, ObjectMapper objectMapper) {
 		this.jmsTemplate = jmsTemplate;
+		this.objectMapper = objectMapper;
 	}
 	
 	@EventListener
 	public void onApplicationEvent(Event event) {
 		String jsonPayload = toJsonPayload(event.payload);
 		jmsTemplate.send(event.eventType, session -> session.createTextMessage(jsonPayload));
+		log.info("Published Message with id : " + event.payloadId);
 		log.debug("Published Message" + event.payload);
 	}
 
