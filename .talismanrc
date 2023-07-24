@@ -1,0 +1,3 @@
+fileignoreconfig:
+- filename: omod/src/test/java/org/bahmni/module/events/ipd/BaseWebControllerTest.java
+  checksum: a7695a02d7277359aa1234889b32972181dea62dd410c0ab6b5c75f0c5f8f04b

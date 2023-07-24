@@ -13,6 +13,7 @@
 	<require_modules>
 		<require_module>org.openmrs.module.webservices.rest</require_module>
 		<require_module>org.bahmni.module.bahmnicore</require_module>
+<!--		<require_module>org.openmrs.module.fhir2</require_module>-->
 	</require_modules>
 
 	<activator>org.bahmni.module.events.EventsActivator</activator>

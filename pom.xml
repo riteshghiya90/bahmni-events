@@ -38,6 +38,7 @@
 	<properties>
 		<openmrsPlatformVersion>2.5.10</openmrsPlatformVersion>
 		<openMRSWebServicesVersion>2.39.0</openMRSWebServicesVersion>
+		<openmrsFhir2Version>1.8.0</openmrsFhir2Version>
 		<springVersion>5.2.14.RELEASE</springVersion>
 		<junitVersion>4.13</junitVersion>
 		<powerMockVersion>2.0.7</powerMockVersion>
@@ -45,7 +46,7 @@
 		<mockitoVersion>3.5.11</mockitoVersion>
 		<argLine>-Xmx1024m</argLine>
 		<jacocoVersion>0.7.9</jacocoVersion>
-		<lombokVersion>1.16.0</lombokVersion>
+		<lombokVersion>1.18.26</lombokVersion>
 	</properties>
 
 	<build>
@@ -167,6 +168,19 @@
 				<version>${openmrsPlatformVersion}</version>
 				<scope>provided</scope>
 			</dependency>
+
+			<!--<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>fhir2-api</artifactId>
+				<version>${openmrsFhir2Version}</version>
+&lt;!&ndash;				<scope>provided</scope>&ndash;&gt;
+			</dependency>-->
+			<!--<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>fhir2-omod</artifactId>
+				<version>${openmrsFhir2Version}</version>
+				<scope>provided</scope>
+			</dependency>-->
 
 			<!-- OpenMRS Test dependencies -->
 			<dependency>
