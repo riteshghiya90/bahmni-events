@@ -16,18 +16,21 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 @Transactional
 public class SlotServiceImpl extends BaseOpenmrsService implements SlotService {
 	
 	private static final Logger log = LoggerFactory.getLogger(SlotServiceImpl.class);
 	
-	private SlotDAO ipdSlotDAO;
-	
-	@Override
-	public void setFhirSlotDao(SlotDAO slotDAO) {
-		this.ipdSlotDAO = slotDAO;
+	private final SlotDAO ipdSlotDAO;
+
+	@Autowired
+	public SlotServiceImpl(SlotDAO ipdSlotDAO) {
+		this.ipdSlotDAO = ipdSlotDAO;
 	}
 	
 	@Override

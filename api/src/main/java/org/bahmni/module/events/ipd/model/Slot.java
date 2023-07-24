@@ -3,12 +3,10 @@ package org.bahmni.module.events.ipd.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Concept;
-import org.openmrs.Location;
-import org.openmrs.Order;
+import org.openmrs.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -16,9 +14,8 @@ import java.util.Date;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Entity
 @Table(name = "ipd_slot")
-public class Slot extends BaseOpenmrsMetadata {
+public class Slot extends BaseOpenmrsObject {
 	
-	// Based on https://hl7.org/fhir/R4/slot.html v4.0.1
 	private static final long serialVersionUID = 1L;
 	
 	public enum SlotStatus {
@@ -72,7 +69,7 @@ public class Slot extends BaseOpenmrsMetadata {
 	/**
 	 * The entity that belongs to a Schedule
 	 */
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "schedule_reference_id", referencedColumnName = "schedule_id")
 	private Schedule schedule;
 	
@@ -107,7 +104,6 @@ public class Slot extends BaseOpenmrsMetadata {
 	@OneToOne
 	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
 	private Order orderId;
-	
 }
 
 

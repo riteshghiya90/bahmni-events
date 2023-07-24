@@ -25,7 +25,6 @@ public class ScheduleMedicationServiceImpl implements ScheduleMedicationService 
 
         Schedule schedule = scheduleMapperService.mapScheduleMedicationRequestToAppointment(scheduleMedicationRequest);
         return scheduleService.saveSchedule(schedule);
-
     }
 }
 

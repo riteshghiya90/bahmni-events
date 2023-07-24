@@ -33,7 +33,7 @@ public class ScheduleMapperService {
 
         Reference openmrsByReference = new Reference();
         openmrsByReference.setType(Patient.class.getTypeName());
-        openmrsByReference.setTargetUuid(scheduleMedicationRequest.getPatientUuid());
+        openmrsByReference.setTargetUuid(scheduleMedicationRequest.getProviderUuid());
         openmrsByReference.setName(openmrsByReference.getType() + "/" + openmrsByReference.getReference());
 
         schedule.setForReference(openmrsForReference);

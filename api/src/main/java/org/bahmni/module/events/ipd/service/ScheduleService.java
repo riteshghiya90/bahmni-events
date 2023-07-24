@@ -9,20 +9,19 @@
  */
 package org.bahmni.module.events.ipd.service;
 
-import org.bahmni.module.events.ipd.dao.ScheduleDAO;
 import org.bahmni.module.events.ipd.model.Schedule;
+import org.bahmni.module.events.ipd.util.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
-import org.openmrs.util.PrivilegeConstants;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface ScheduleService extends OpenmrsService {
 	
-	void setFhirScheduleDao(ScheduleDAO scheduleDAO);
-	
-	@Authorized({ PrivilegeConstants.GET_PATIENTS })
+	@Authorized({ PrivilegeConstants.EDIT_IPD_SCHEDULES })
 	Schedule getSchedule(Integer scheduleId) throws APIException;
 	
-	@Authorized({ PrivilegeConstants.ADD_PATIENTS })
+	@Authorized({ PrivilegeConstants.EDIT_IPD_SCHEDULES })
 	Schedule saveSchedule(Schedule schedule) throws APIException;
 }

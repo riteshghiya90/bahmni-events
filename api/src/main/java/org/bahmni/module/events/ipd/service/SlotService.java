@@ -9,20 +9,20 @@
  */
 package org.bahmni.module.events.ipd.service;
 
-import org.bahmni.module.events.ipd.dao.SlotDAO;
 import org.bahmni.module.events.ipd.model.Slot;
+import org.bahmni.module.events.ipd.util.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
-import org.openmrs.util.PrivilegeConstants;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface SlotService extends OpenmrsService {
-	
-	void setFhirSlotDao(SlotDAO slotDAO);
-	
-	@Authorized({ PrivilegeConstants.GET_PATIENTS })
+
+	@Authorized({ PrivilegeConstants.EDIT_IPD_SCHEDULES })
 	Slot getSlot(Integer slotId) throws APIException;
-	
-	@Authorized({ PrivilegeConstants.ADD_PATIENTS })
+
+	@Authorized({ PrivilegeConstants.EDIT_IPD_SLOTS })
 	Slot saveSlot(Slot slot) throws APIException;
 }

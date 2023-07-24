@@ -16,23 +16,23 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 @Transactional
 public class ScheduleServiceImpl extends BaseOpenmrsService implements ScheduleService {
 	
 	private static final Logger log = LoggerFactory.getLogger(ScheduleServiceImpl.class);
 	
-	private ScheduleDAO scheduleDAO;
-	
-	/**
-	 * @see ScheduleService#setFhirScheduleDao(ScheduleDAO) (org.openmrs.api.db.PersonDAO)
-	 */
-	@Override
-	public void setFhirScheduleDao(ScheduleDAO scheduleDAO) {
+	private final ScheduleDAO scheduleDAO;
+
+	@Autowired
+	public ScheduleServiceImpl(ScheduleDAO scheduleDAO) {
 		this.scheduleDAO = scheduleDAO;
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public Schedule getSchedule(Integer scheduleId) throws APIException {
@@ -43,5 +43,4 @@ public class ScheduleServiceImpl extends BaseOpenmrsService implements ScheduleS
 	public Schedule saveSchedule(Schedule schedule) throws APIException {
 		return scheduleDAO.saveSchedule(schedule);
 	}
-	
 }

@@ -9,4 +9,22 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="org.bahmni.module.events.ipd"/>
+
+    <bean id="sessionFactory" class="org.openmrs.api.db.hibernate.HibernateSessionFactoryBean">
+        <property name="configLocations">
+            <list>
+                <value>classpath:hibernate.cfg.xml</value>
+            </list>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>org.openmrs</value>
+                <value>org.bahmni.module.events.ipd.model</value>
+            </list>
+        </property>
+        <property name="mappingJarLocations">
+            <ref bean="mappingJarResources" />
+        </property>
+        <!--  default properties must be set in the hibernate.default.properties -->
+    </bean>
 </beans>

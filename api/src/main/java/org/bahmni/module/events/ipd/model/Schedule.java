@@ -3,7 +3,7 @@ package org.bahmni.module.events.ipd.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.Concept;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import java.util.Date;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Entity
 @Table(name = "ipd_schedule")
-public class Schedule extends BaseOpenmrsMetadata {
+public class Schedule extends BaseOpenmrsObject {
 	
 	// Based on https://hl7.org/fhir/R4/schedule.html v4.0.1
 	
@@ -39,13 +39,6 @@ public class Schedule extends BaseOpenmrsMetadata {
 	private Reference byReference;
 	
 	/**
-	 * The location Where schedule occurs
-	 */
-	/*@ManyToOne(optional = false)
-	@JoinColumn(name = "location_id", referencedColumnName = "location_id")
-	private Location locationId;*/
-	
-	/**
 	 * Whether this schedule is in active use
 	 */
 	@Column(name = "active", nullable = false)
@@ -56,7 +49,7 @@ public class Schedule extends BaseOpenmrsMetadata {
 	 */
 	@OneToOne
 	@JoinColumn(name = "service_category_id", referencedColumnName = "concept_id")
-	private Concept serviceCategoryId;
+	private Concept serviceCategory;
 	
 	/**
 	 * The Service Type of the Schedule

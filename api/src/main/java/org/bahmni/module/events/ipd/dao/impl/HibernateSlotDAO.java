@@ -15,14 +15,18 @@ import org.hibernate.SessionFactory;
 import org.openmrs.api.db.DAOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class HibernateSlotDAO implements SlotDAO {
 	
 	private static final Logger log = LoggerFactory.getLogger(HibernateSlotDAO.class);
 	
-	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	private final SessionFactory sessionFactory;
+
+	@Autowired
+	public HibernateSlotDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	
