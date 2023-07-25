@@ -3,7 +3,7 @@ package org.bahmni.module.events.ipd.mapper;
 import org.bahmni.module.events.ipd.contract.ScheduleMedicationRequest;
 import org.bahmni.module.events.ipd.model.Reference;
 import org.bahmni.module.events.ipd.model.Schedule;
-import org.openmrs.Order;
+import org.openmrs.DrugOrder;
 import org.openmrs.Patient;
 import org.openmrs.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,10 @@ public class ScheduleMapperService {
         this.orderService = orderService;
     }
 
-    public Schedule mapScheduleMedicationRequestToAppointment(ScheduleMedicationRequest scheduleMedicationRequest) {
+    public Schedule mapScheduleMedicationRequestToSchedule(ScheduleMedicationRequest scheduleMedicationRequest) {
         Schedule schedule = new Schedule();
 
-        // get start date from order
-        Order order = orderService.getOrderByUuid(scheduleMedicationRequest.getOrderUuid());
-        // create a concept for MAR
+        DrugOrder drugOrder = (DrugOrder) orderService.getOrderByUuid(scheduleMedicationRequest.getOrderUuid());
 
         Reference openmrsForReference = new Reference();
         openmrsForReference.setType(Patient.class.getTypeName());
@@ -38,8 +36,8 @@ public class ScheduleMapperService {
 
         schedule.setForReference(openmrsForReference);
         schedule.setByReference(openmrsByReference);
-        schedule.setStartDate(order.getEffectiveStartDate());
-        schedule.setEndDate(order.getEffectiveStopDate());
+        schedule.setStartDate(drugOrder.getEffectiveStartDate());
+        schedule.setEndDate(drugOrder.getEffectiveStopDate());
         schedule.setActive(true);
 
         return schedule;

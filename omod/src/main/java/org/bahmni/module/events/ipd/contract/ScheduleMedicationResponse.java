@@ -1,14 +1,23 @@
 package org.bahmni.module.events.ipd.contract;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.bahmni.module.events.ipd.model.Schedule;
 import org.openmrs.Concept;
 
+import java.io.Serializable;
 import java.util.Date;
 
-@Getter
 @Builder
+@Getter
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleMedicationResponse {
     private Integer id;
     private String patientUuid;

@@ -11,6 +11,7 @@ package org.bahmni.module.events.ipd.dao.impl;
 
 import org.bahmni.module.events.ipd.dao.ScheduleDAO;
 import org.bahmni.module.events.ipd.model.Schedule;
+import org.bahmni.module.events.ipd.model.Slot;
 import org.hibernate.SessionFactory;
 import org.openmrs.api.db.DAOException;
 import org.slf4j.Logger;
@@ -38,5 +39,10 @@ public class HibernateScheduleDAO implements ScheduleDAO {
 	public Schedule saveSchedule(Schedule schedule) throws DAOException {
 		sessionFactory.getCurrentSession().saveOrUpdate(schedule);
 		return schedule;
+	}
+
+	@Override
+	public void purgeSchedule(Schedule schedule) throws DAOException {
+		sessionFactory.getCurrentSession().delete(schedule);
 	}
 }

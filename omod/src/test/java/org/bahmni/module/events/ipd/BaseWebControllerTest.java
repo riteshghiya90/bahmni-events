@@ -42,6 +42,7 @@ public class BaseWebControllerTest extends BaseModuleWebContextSensitiveTest {
     public MockHttpServletRequest request(RequestMethod method, String requestURI) {
         MockHttpServletRequest request = new MockHttpServletRequest(method.toString(), requestURI);
         request.addHeader("content-type", "application/json");
+        request.addHeader("accept", "application/json");
         return request;
     }
 

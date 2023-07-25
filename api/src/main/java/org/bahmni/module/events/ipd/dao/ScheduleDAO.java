@@ -10,6 +10,8 @@
 package org.bahmni.module.events.ipd.dao;
 
 import org.bahmni.module.events.ipd.model.Schedule;
+import org.bahmni.module.events.ipd.model.Slot;
+import org.openmrs.api.APIException;
 import org.openmrs.api.db.DAOException;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +21,6 @@ public interface ScheduleDAO {
 	Schedule getSchedule(Integer scheduleId) throws DAOException;
 	
 	Schedule saveSchedule(Schedule schedule) throws DAOException;
+
+	void purgeSchedule(Schedule schedule) throws DAOException;
 }

@@ -25,4 +25,7 @@ public interface SlotService extends OpenmrsService {
 
 	@Authorized({ PrivilegeConstants.EDIT_IPD_SLOTS })
 	Slot saveSlot(Slot slot) throws APIException;
+
+	@Authorized({ PrivilegeConstants.EDIT_IPD_SLOTS })
+	void purgeSlot(Slot slot) throws APIException;
 }

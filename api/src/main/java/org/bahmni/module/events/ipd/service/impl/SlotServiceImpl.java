@@ -26,21 +26,26 @@ public class SlotServiceImpl extends BaseOpenmrsService implements SlotService {
 	
 	private static final Logger log = LoggerFactory.getLogger(SlotServiceImpl.class);
 	
-	private final SlotDAO ipdSlotDAO;
+	private final SlotDAO slotDAO;
 
 	@Autowired
-	public SlotServiceImpl(SlotDAO ipdSlotDAO) {
-		this.ipdSlotDAO = ipdSlotDAO;
+	public SlotServiceImpl(SlotDAO slotDAO) {
+		this.slotDAO = slotDAO;
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public Slot getSlot(Integer slotId) throws APIException {
-		return ipdSlotDAO.getSlot(slotId);
+		return slotDAO.getSlot(slotId);
 	}
 	
 	@Override
 	public Slot saveSlot(Slot slot) throws APIException {
-		return ipdSlotDAO.saveSlot(slot);
+		return slotDAO.saveSlot(slot);
+	}
+
+	@Override
+	public void purgeSlot(Slot slot) throws APIException {
+		slotDAO.purgeSlot(slot);
 	}
 }

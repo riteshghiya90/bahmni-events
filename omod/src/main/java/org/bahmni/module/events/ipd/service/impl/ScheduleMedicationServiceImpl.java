@@ -23,7 +23,7 @@ public class ScheduleMedicationServiceImpl implements ScheduleMedicationService 
     @Override
     public Schedule schedule(ScheduleMedicationRequest scheduleMedicationRequest) {
 
-        Schedule schedule = scheduleMapperService.mapScheduleMedicationRequestToAppointment(scheduleMedicationRequest);
+        Schedule schedule = scheduleMapperService.mapScheduleMedicationRequestToSchedule(scheduleMedicationRequest);
         return scheduleService.saveSchedule(schedule);
     }
 }

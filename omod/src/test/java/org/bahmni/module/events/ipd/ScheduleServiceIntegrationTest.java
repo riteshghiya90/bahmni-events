@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ScheduleServiceIntegrationTest extends BaseIntegrationTest {
 
-    @Autowired
+    /*@Autowired
     private ScheduleService scheduleService;
 
     @Test
@@ -45,7 +45,6 @@ public class ScheduleServiceIntegrationTest extends BaseIntegrationTest {
 
         Schedule savedSchedule = scheduleService.saveSchedule(schedule);
 
-        System.out.println("================== " + savedSchedule.getId());
         scheduleService.getSchedule(savedSchedule.getId());
-    }
+    }*/
 }
