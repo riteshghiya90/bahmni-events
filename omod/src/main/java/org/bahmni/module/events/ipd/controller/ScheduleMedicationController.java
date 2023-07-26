@@ -32,7 +32,7 @@ public class ScheduleMedicationController extends BaseRestController {
     @ResponseBody
     public ResponseEntity<Object> createMedicationSchedule(@Valid @RequestBody ScheduleMedicationRequest scheduleMedicationRequest) {
         try {
-            Schedule schedule = scheduleMedicationService.schedule(scheduleMedicationRequest);
+            Schedule schedule = scheduleMedicationService.createSchedule(scheduleMedicationRequest);
             return new ResponseEntity<>(ScheduleMedicationResponse.constructFrom(schedule), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Runtime error while trying to create new appointment", e);

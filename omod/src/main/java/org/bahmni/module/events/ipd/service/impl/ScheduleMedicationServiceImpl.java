@@ -5,6 +5,9 @@ import org.bahmni.module.events.ipd.mapper.ScheduleMapperService;
 import org.bahmni.module.events.ipd.model.Schedule;
 import org.bahmni.module.events.ipd.service.ScheduleMedicationService;
 import org.bahmni.module.events.ipd.service.ScheduleService;
+import org.openmrs.DrugOrder;
+import org.openmrs.Order;
+import org.openmrs.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +24,7 @@ public class ScheduleMedicationServiceImpl implements ScheduleMedicationService 
     }
 
     @Override
-    public Schedule schedule(ScheduleMedicationRequest scheduleMedicationRequest) {
+    public Schedule createSchedule(ScheduleMedicationRequest scheduleMedicationRequest) {
 
         Schedule schedule = scheduleMapperService.mapScheduleMedicationRequestToSchedule(scheduleMedicationRequest);
         return scheduleService.saveSchedule(schedule);

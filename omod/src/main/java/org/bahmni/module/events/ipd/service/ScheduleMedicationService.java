@@ -4,5 +4,5 @@ import org.bahmni.module.events.ipd.contract.ScheduleMedicationRequest;
 import org.bahmni.module.events.ipd.model.Schedule;
 
 public interface ScheduleMedicationService {
-    Schedule schedule(ScheduleMedicationRequest scheduleMedicationRequest);
+    Schedule createSchedule(ScheduleMedicationRequest scheduleMedicationRequest);
 }
